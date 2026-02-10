@@ -91,18 +91,14 @@ test.describe('Task Board Validation', () => {
     test(tc.name, async ({ page }) => {
       // Login
       await login(page);
-
       // Navigate to application
       await page.click(`text=${tc.application}`);
-
       // Locate column
       const column = page.locator(`[data-testid="column-${tc.column}"]`);
       await expect(column).toBeVisible();
-
       // Verify task exists in correct column
       const taskCard = column.locator(`text=${tc.task}`);
       await expect(taskCard).toBeVisible();
-
       // Verify tags
       for (const tag of tc.tags) {
         await expect(
@@ -112,7 +108,6 @@ test.describe('Task Board Validation', () => {
     });
   }
 });
-
 //Run Test
 npx playwright test
 
